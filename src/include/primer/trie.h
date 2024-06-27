@@ -125,10 +125,12 @@ class Trie {
   template <class T>
   auto Put(std::string_view key, T value) const -> Trie;
 
+  template<class T>
+  auto Put(std::shared_ptr<TrieNode> new_root,std::string_view key, T value) const -> Trie;
   // Remove the key from the trie. If the key does not exist, return the original trie.
   // Otherwise, returns the new trie.
   auto Remove(std::string_view key) const -> Trie;
-
+  auto Remove(std::shared_ptr<TrieNode> new_root,std::string_view key) const -> Trie;
   // Get the root of the trie, should only be used in test cases.
   auto GetRoot() const -> std::shared_ptr<const TrieNode> { return root_; }
 };
